@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "579024944563",
+    "firebase_url": "https://notes-ecf2e-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "notes-ecf2e",
+    "storage_bucket": "notes-ecf2e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:579024944563:android:6fce2bc684c68edf055fc6",
+        "android_client_info": {
+          "package_name": "com.example.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "579024944563-0ov7habd7dfsuck5dikoalnuvhu4563q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBO9n5WqWubL_nnWxCEctPKZV6_ALff7as"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "579024944563-0ov7habd7dfsuck5dikoalnuvhu4563q.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "579024944563-03eghemm680l4lsd9s5rsko4v881knb9.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.notes"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
