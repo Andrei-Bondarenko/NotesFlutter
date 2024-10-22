@@ -39,7 +39,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(isLoading: true, isSuccessfullySignedIn: false));
     await _noteInteractor.saveLocalNotesToRemote(state.notesList);
     // await _noteInteractor.triggerNotesUpdate();
-    getIt<NotesListBloc>().add(NotesDataLoaded()); 
+    getIt<NotesListBloc>().add(NotesDataLoaded());
     emit(state.copyWith(isLoading: false, isSuccessfullySignedIn: true, isNotesListEmpty: true));
   }
 

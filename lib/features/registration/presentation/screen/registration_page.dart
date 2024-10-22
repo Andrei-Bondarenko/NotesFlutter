@@ -131,8 +131,8 @@ class _PasswordField extends StatelessWidget {
           previous.passwordTextError != current.passwordTextError,
       builder: (context, state) {
         return CustomTextField(
-          labelText: S.of(context).email,
-          errorText: state.emailTextError,
+          labelText: S.of(context).password,
+          errorText: state.passwordTextError,
           needObscureText: true,
           onChanged: (value) => bloc.add(
             RegistrationPasswordChanged(password: value),

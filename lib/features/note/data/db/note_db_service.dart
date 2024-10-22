@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:notes/core/database/notes_database.dart';
 import 'package:notes/features/note/data/db/models/note_entity.dart';
 import 'package:sqflite/sqflite.dart';
@@ -18,19 +19,28 @@ class NoteDbService {
         conflictAlgorithm: ConflictAlgorithm.replace);
   }
 
-  Future insertNotesList(List<NoteEntity> notesList) async{
-    final database = await _notesDatabase.database;
+  Future insertNotesList(List<NoteEntity> notesList) async {
+    final Database database = await _notesDatabase.database;
     final Batch batch = database.batch();
-    for(NoteEntity note in notesList) {
+
+    for (NoteEntity note in notesList) {
       batch.insert(tableName, note.toJson());
     }
     final List<dynamic> results = await batch.commit();
+
+    debugPrint('NOTE DB RESULTS ===>>> $results');
   }
 
   Future<List<NoteEntity>> getNotes() async {
     final db = await _notesDatabase.database;
     final List<Map<String, dynamic>> maps = await db.query(tableName);
-    return maps.map((e) => NoteEntity.fromJson(e)).toList();
+    final check = maps.map((e) {
+      print('RUNTIME TYPE ==>>> ${e.runtimeType}');
+     return NoteEntity.fromJson(e);
+    }
+    ).toList();
+    debugPrint('NOTE DB SERVICE DATA ==>> $check');
+    return check;
   }
 
   Future<NoteEntity?> getNoteById(String id) async {
@@ -52,5 +62,4 @@ class NoteDbService {
     final db = await _notesDatabase.database;
     return db.delete(tableName);
   }
-
 }

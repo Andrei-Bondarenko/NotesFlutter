@@ -13,8 +13,9 @@ class NoteFirebaseService {
   Future<List<NoteEntity>> getNotes(String userId) async {
     final dataSnapshot = await _ref.child(userId).get();
     final dynamic maps = dataSnapshot.children.map((e) {
+      print('KEY RUNTIME TYPE ==>> ${e.key.runtimeType} KEY => ${e.key} ');
       final key = e.key as String;
-      final value = e.value as Map<String, dynamic>;
+      final value = e.value as Map<dynamic, dynamic>;
       return NoteEntity.fromFirebaseJson(key, value);
     }).toList();
     return maps;

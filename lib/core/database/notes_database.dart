@@ -31,7 +31,7 @@ class NotesDatabase {
 
     await db.execute('''
     CREATE TABLE ${NoteDbService.tableName}(
-    ${NoteDbService.columnId} INTEGER PRIMARY KEY, 
+    ${NoteDbService.columnId} TEXT PRIMARY KEY, 
     ${NoteDbService.columnTitle} TEXT, 
     ${NoteDbService.columnContent} TEXT
     )

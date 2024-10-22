@@ -67,10 +67,4 @@ class NoteInteractor {
   Future deleteAllLocalNotes() {
     return _noteLocalRepository.deleteAllLocalNotes();
   }
-
-  Future triggerNotesUpdate() async{
-    final lastItem = await notesTriggerStream.last;
-    _controller.sink.add(!lastItem);
-  }
-
 }
