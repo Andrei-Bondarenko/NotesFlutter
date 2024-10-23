@@ -26,19 +26,31 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginEmailChanged>(_onEmailChanged);
     on<LoginPasswordChanged>(_onPasswordChanged);
     on<LoginSignInButtonClicked>(_onSignInButtonClicked);
-    on<SaveLocalDataYesButtonClicked>(_onSaveLocalDataYseButtonClicked);
+    on<SaveLocalDataYesButtonClicked>(_onSaveLocalDataYesButtonClicked);
+    on<SaveLocalDataNoButtonClicked>(_onSaveLocalDataNoButtonClicked);
   }
 
   final AuthInteractor _authInteractor;
   final NoteInteractor _noteInteractor;
 
-  void _onSaveLocalDataYseButtonClicked(
+  void _onSaveLocalDataYesButtonClicked(
     SaveLocalDataYesButtonClicked event,
     Emitter<LoginState> emit,
   ) async {
     emit(state.copyWith(isLoading: true, isSuccessfullySignedIn: false));
     await _noteInteractor.saveLocalNotesToRemote(state.notesList);
-    // await _noteInteractor.triggerNotesUpdate();
+    getIt<NotesListBloc>().add(NotesDataLoaded());
+    emit(state.copyWith(isLoading: false, isSuccessfullySignedIn: true, isNotesListEmpty: true));
+  }
+
+  void _onSaveLocalDataNoButtonClicked(
+      SaveLocalDataNoButtonClicked event,
+      Emitter<LoginState> emit,
+      ) async {
+    emit(state.copyWith(isLoading: true, isSuccessfullySignedIn: false));
+    await _noteInteractor.deleteAllLocalNotes();
+    final notes = await _noteInteractor.getLocalNotes();
+    print('NOOOOOOOOOTEEEESSSSS ONNOCLICKED ==>> $notes');
     getIt<NotesListBloc>().add(NotesDataLoaded());
     emit(state.copyWith(isLoading: false, isSuccessfullySignedIn: true, isNotesListEmpty: true));
   }
@@ -74,7 +86,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       emit(state.copyWith(
         isLoading: false,
         isSuccessfullySignedIn: true,
-        isNotesListEmpty: notes.isNotEmpty,
+        isNotesListEmpty: notes.isEmpty,
         notesList: notes,
       ));
     }

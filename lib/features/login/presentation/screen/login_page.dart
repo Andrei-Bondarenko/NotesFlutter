@@ -260,7 +260,6 @@ class _SaveLocalDataDialog extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final bloc = context.read<LoginBloc>();
     return AlertDialog(
       title: Text(S.of(context).save_local_data_title),
       content: Text(S.of(context).save_local_data_description),
@@ -268,13 +267,14 @@ class _SaveLocalDataDialog extends StatelessWidget {
         TextButton(
             onPressed: () {
               context.pop();
+              context.pop();
               bloc.add(SaveLocalDataYesButtonClicked());
             },
             child: Text(S.of(context).button_yes)),
         TextButton(
             onPressed: () {
               context.pop();
-              context.pop();
+              bloc.add(SaveLocalDataNoButtonClicked());
             },
             child: Text(S.of(context).button_no))
       ],

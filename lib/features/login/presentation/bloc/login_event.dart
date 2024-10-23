@@ -33,4 +33,6 @@ class LoginSignInButtonClicked extends LoginEvent {}
 
 class SaveLocalDataYesButtonClicked extends LoginEvent {}
 
+class SaveLocalDataNoButtonClicked extends LoginEvent {}
+
 

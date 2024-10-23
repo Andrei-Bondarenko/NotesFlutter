@@ -27,7 +27,8 @@ class NoteInteractor {
 
   Future saveNote(Note note) async {
     final user = _authLocalRepository.getUser();
-    if (user == null) return;
+    final localData = _noteLocalRepository.saveNote(note);
+    if (user == null) return localData;
     return _noteRemoteRepository.saveNote(note, user.uid);
   }
 

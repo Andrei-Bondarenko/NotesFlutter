@@ -43,6 +43,7 @@ class AuthInteractor {
 
   Future logOut() async {
     _authRemoteRepository.logOut();
+    _authLocalRepository.logOut();
   }
 
   Future<UserCredential?> registerUser(String email, String password) async {

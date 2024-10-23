@@ -175,6 +175,8 @@ class _RegisterButton extends StatelessWidget {
               ? null
               : () {
                   bloc.add(RegistrationRegisterButtonClicked());
+                  context.pop();
+                  context.pop();
                 },
           child: Text(
             S.of(context).register,

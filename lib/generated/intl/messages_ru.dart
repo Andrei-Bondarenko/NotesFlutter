@@ -44,7 +44,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "register": MessageLookupByLibrary.simpleMessage("Зарегистрироваться"),
         "reminders": MessageLookupByLibrary.simpleMessage("Reminders"),
         "save_local_data_description": MessageLookupByLibrary.simpleMessage(
-            "У вас есть локальные заметки, хотите ли вы иъ сохранить? "),
+            "У вас есть локальные заметки, хотите ли вы иx сохранить? "),
         "save_local_data_title":
             MessageLookupByLibrary.simpleMessage("Предупреждение"),
         "sign_in": MessageLookupByLibrary.simpleMessage("Войти"),

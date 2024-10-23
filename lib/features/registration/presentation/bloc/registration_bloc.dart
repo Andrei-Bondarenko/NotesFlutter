@@ -47,6 +47,8 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
     print('USER CREDENTIAL REGISTRATION ==>>> $userCredential');
     if (userCredential != null) {
       emit(state.copyWith(isLoading: false, isSuccessfullyRegistered: true));
+    }else {
+      emit(state.copyWith(isLoading: false));
     }
   }
 }
