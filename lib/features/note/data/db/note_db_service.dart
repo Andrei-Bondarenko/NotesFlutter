@@ -35,7 +35,7 @@ class NoteDbService {
     final db = await _notesDatabase.database;
     final List<Map<String, dynamic>> maps = await db.query(tableName);
     final check = maps.map((e) {
-      print('RUNTIME TYPE ==>>> ${e.runtimeType}');
+      print('RUNTIME TYPE ==>>> ${e.keys.runtimeType}');
      return NoteEntity.fromJson(e);
     }
     ).toList();

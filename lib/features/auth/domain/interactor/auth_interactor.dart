@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:intl/intl.dart';
 import 'package:notes/features/auth/domain/repository/auth_local_repository.dart';
 import 'package:notes/features/auth/domain/repository/auth_remote_repository.dart';
 
@@ -9,8 +10,8 @@ class AuthInteractor {
   AuthInteractor({
     required AuthRemoteRepository authRemoteRepository,
     required AuthLocalRepository authLocalRepository,
-  }) : _authRemoteRepository = authRemoteRepository,
-  _authLocalRepository = authLocalRepository;
+  })  : _authRemoteRepository = authRemoteRepository,
+        _authLocalRepository = authLocalRepository;
 
   Stream<User?> observeRemoteUser() {
     return _authRemoteRepository.observeAuthState();
@@ -31,6 +32,7 @@ class AuthInteractor {
   Future<OAuthCredential> getGoogleCredential() {
     return _authRemoteRepository.getGoogleCredential();
   }
+
   Future<OAuthCredential> getAppleCredential() {
     return _authRemoteRepository.getAppleCredential();
   }
@@ -47,8 +49,11 @@ class AuthInteractor {
     return _authRemoteRepository.registerUser(email, password);
   }
 
-  Future<UserCredential?> signInWithEmailAndPassword({required String email,required String password}) async {
-    return _authRemoteRepository.signInWithEmailAndPassword(email: email, password: password);
+  Future<UserCredential?> signInWithEmailAndPassword(
+      {required String email, required String password}) async {
+    final salam =
+        _authRemoteRepository.signInWithEmailAndPassword(email: email, password: password);
+    print('SALAM AUTH INTERACTOR ===>>> $salam');
+    return salam;
   }
-
 }

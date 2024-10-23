@@ -37,8 +37,10 @@ class NoteInteractor {
       final notesList = await _noteRemoteRepository.getNotes(user.uid);
       await _noteLocalRepository.deleteAllLocalNotes();
       await _noteLocalRepository.saveNotesList(notesList);
+     final musia = await _noteLocalRepository.getNotes();
+     print('NOTES INTERACTOR LOCAL GET NOTES ==>> ${musia}');
     }
-    return _noteLocalRepository.getNotes();
+    return await _noteLocalRepository.getNotes();
   }
 
   Future<List<Note>> getLocalNotes() async {

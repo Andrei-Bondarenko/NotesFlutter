@@ -67,7 +67,9 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     emit(state.copyWith(isLoading: true));
     final notes = await _noteInteractor.getLocalNotes();
     final userCredential = await _authInteractor.signInWithEmailAndPassword(
-        email: state.email, password: state.password);
+      email: state.email,
+      password: state.password,
+    );
     if (userCredential != null) {
       emit(state.copyWith(
         isLoading: false,
@@ -76,7 +78,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         notesList: notes,
       ));
     }
-    print('USER CREDENTIAL ==>>> $userCredential');
+    print('USER CREDENTIAL LOGIN==>>> $userCredential');
   }
 
   void _onLoginGoogleIconClicked(
