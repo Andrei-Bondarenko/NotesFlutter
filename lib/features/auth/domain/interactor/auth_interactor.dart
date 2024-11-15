@@ -52,9 +52,7 @@ class AuthInteractor {
 
   Future<UserCredential?> signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    final salam =
-        _authRemoteRepository.signInWithEmailAndPassword(email: email, password: password);
-    print('SALAM AUTH INTERACTOR ===>>> $salam');
-    return salam;
+    final userCredential = _authRemoteRepository.signInWithEmailAndPassword(email: email, password: password);
+    return userCredential;
   }
 }

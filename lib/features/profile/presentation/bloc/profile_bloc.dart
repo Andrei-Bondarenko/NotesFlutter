@@ -32,7 +32,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) {
     _authInteractor.observeRemoteUser().listen((user) {
       add(ProfileUserChanged(user: user));
-      debugPrint('PROFILE BLOC user: $user');
     });
   }
 
@@ -42,7 +41,6 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   ) {
     final user = _authInteractor.getUser();
     emit(state.copyWith(user: () => user, isLoading: false));
-    debugPrint('PROFILE BLOC GET user: $user');
   }
 
   void _onProfileLogOutButtonClicked(

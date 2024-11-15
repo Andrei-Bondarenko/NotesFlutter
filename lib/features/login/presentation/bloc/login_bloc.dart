@@ -49,8 +49,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       ) async {
     emit(state.copyWith(isLoading: true, isSuccessfullySignedIn: false));
     await _noteInteractor.deleteAllLocalNotes();
-    final notes = await _noteInteractor.getLocalNotes();
-    print('NOOOOOOOOOTEEEESSSSS ONNOCLICKED ==>> $notes');
     getIt<NotesListBloc>().add(NotesDataLoaded());
     emit(state.copyWith(isLoading: false, isSuccessfullySignedIn: true, isNotesListEmpty: true));
   }
@@ -90,7 +88,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         notesList: notes,
       ));
     }
-    print('USER CREDENTIAL LOGIN==>>> $userCredential');
   }
 
   void _onLoginGoogleIconClicked(
@@ -103,7 +100,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final userCredential = await _authInteractor.signInWithCredential(credential);
       final notes = await _noteInteractor.getLocalNotes();
       emit(state.copyWith(isSuccessfullySignedIn: true, isNotesListEmpty: notes.isEmpty));
-      debugPrint('USERCREDENTIAL: ${userCredential.user?.email}');
     } catch (e) {
     } finally {
       emit(state.copyWith(isLoading: false));
@@ -119,7 +115,6 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
       final credential = await _authInteractor.getAppleCredential();
       final userCredential = await _authInteractor.signInWithCredential(credential);
       emit(state.copyWith(isSuccessfullySignedIn: true));
-      debugPrint('USERCREDENTIAL: ${userCredential.user?.email}');
     } catch (e) {
     } finally {
       emit(state.copyWith(isLoading: false));

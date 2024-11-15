@@ -33,21 +33,6 @@ class NoteRemoteRepositoryImpl implements NoteRemoteRepository {
 
   @override
   Future deleteNote(String userId, String noteId) {
-  return _noteFirebaseService.deleteNote(userId, noteId);
+    return _noteFirebaseService.deleteNote(userId, noteId);
   }
-
-
-// @override
-// Future<List<Note>> getNotes() {
-//   final entities = _noteFirebaseService.getNotes();
-//   debugPrint('### -> GET NOTES entities: $entities');
-//   return entities.then((list) => list.map((e) => Note(title: e.title, content: e.content)).toList());
-// }
-//
-// @override
-// Future<Note?> getNoteById(int id) {
-//   final entity = _noteFirebaseService.getNoteById(id);
-//   debugPrint('### -> GET NOTE BY ID id: $entity');
-//   return entity.then((e) => e == null ? null : Note(title: e.title, content: e.content));
-// }
 }

@@ -75,9 +75,8 @@ class AuthRemoteRepositoryImpl implements AuthRemoteRepository {
   @override
   Future<UserCredential?> signInWithEmailAndPassword(
       {required String email, required String password}) async {
-    final bumbum = _authService.signInWithEmailAndPassword(email: email, password: password);
-    print('AUTH REMOTE BUMBUM ==>> $bumbum');
-    return bumbum;
+    final userCredential = _authService.signInWithEmailAndPassword(email: email, password: password);
+    return userCredential;
   }
 
   String _getSha256ofString(String input) {

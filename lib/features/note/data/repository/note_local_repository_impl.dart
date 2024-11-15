@@ -20,21 +20,18 @@ class NoteLocalRepositoryImpl implements NoteLocalRepository {
   Future<int> saveNote(Note note) {
     NoteEntity entity = NoteEntity(id: note.id, title: note.title, content: note.content);
     final id = _noteDbService.insertNote(entity);
-    debugPrint('### -> SAVE NOTE id: $id');
     return id;
   }
 
   @override
   Future<List<Note>> getNotes() {
     final entities = _noteDbService.getNotes();
-    debugPrint('### -> GET NOTES entities: $entities');
     return entities.then((list) => list.map(_noteDataMapper.map).toList());
   }
 
   @override
   Future<Note?> getNoteById(String id) {
     final entity = _noteDbService.getNoteById(id);
-    debugPrint('### -> GET NOTE BY ID id: $entity');
     return entity.then((e) => e == null ? null : _noteDataMapper.map(e));
   }
 

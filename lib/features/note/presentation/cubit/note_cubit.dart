@@ -22,7 +22,6 @@ class NoteCubit extends Cubit<NoteState> {
   final TextEditingController contentController = TextEditingController();
 
   void updateTitle(String title) {
-    debugPrint('BLOC TITLE => ${state.title}');
     emit(state.copyWith(title: title));
   }
 
@@ -32,10 +31,8 @@ class NoteCubit extends Cubit<NoteState> {
 
   void saveNote() async {
     final id = state.id ?? const Uuid().v4();
-    debugPrint('BLOC TITLE => ${state.title}, CONTENT => ${state.content}');
     final note = Note(id: id, title: state.title, content: state.content);
     await _noteInteractor.saveNote(note);
-    debugPrint('SAVE NOTE DATA ID = $id');
     emit(state.copyWith(needExit: true));
   }
 

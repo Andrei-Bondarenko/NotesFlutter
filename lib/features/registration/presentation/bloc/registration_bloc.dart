@@ -44,7 +44,6 @@ class RegistrationBloc extends Bloc<RegistrationEvent, RegistrationState> {
   ) async {
     emit(state.copyWith(isLoading: true));
     final userCredential = await _authInteractor.registerUser(state.email, state.password);
-    print('USER CREDENTIAL REGISTRATION ==>>> $userCredential');
     if (userCredential != null) {
       emit(state.copyWith(isLoading: false, isSuccessfullyRegistered: true));
     }else {

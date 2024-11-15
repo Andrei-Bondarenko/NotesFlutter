@@ -76,6 +76,7 @@ class _ContentField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: TextField(
+        controller: cubit.contentController,
         decoration: InputDecoration(
           hintText: S.of(context).enter_text,
           fillColor: Colors.white,
@@ -100,6 +101,7 @@ class _TitleField extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: TextField(
+        controller: cubit.titleController,
         decoration: InputDecoration(
           hintText: S.of(context).title,
           fillColor: Colors.white,

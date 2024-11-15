@@ -72,9 +72,7 @@ class _Body extends StatelessWidget {
               onTap: () {
                 final id = note.id;
                 context.push(NoteRoute.getRouteWithArgs(id)).then((value) {
-                  if (value == true) {
-                    bloc.add(NotesDataLoaded());
-                   }
+                  bloc.add(NotesDataLoaded());
                 });
               },
             );

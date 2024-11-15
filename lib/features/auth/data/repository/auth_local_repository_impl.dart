@@ -22,7 +22,6 @@ class AuthLocalRepositoryImpl implements AuthLocalRepository {
   void saveUser(user) {
     _user = user;
     _addToStream(user);
-    debugPrint('USER  SAVE => $user');
   }
 
   void _addToStream(User? user) => _controller.sink.add(user);

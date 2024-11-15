@@ -20,5 +20,10 @@
   "save_local_data_title": "Предупреждение",
   "save_local_data_description": "У вас есть локальные заметки, хотите ли вы иx сохранить? ",
   "button_yes": "Yes",
-  "button_no": "No"
+  "button_no": "No",
+  "event": "Event",
+  "task": "Task",
+  "task_all_day": "Весь день",
+  "task_input_title": "Введите название заметки"
+
 }

@@ -32,6 +32,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "email_text_error":
             MessageLookupByLibrary.simpleMessage("Email is not correct"),
         "enter_text": MessageLookupByLibrary.simpleMessage("Введите текст"),
+        "event": MessageLookupByLibrary.simpleMessage("Event"),
         "note_create": MessageLookupByLibrary.simpleMessage("Создание заметки"),
         "note_edit":
             MessageLookupByLibrary.simpleMessage("Редактирование заметки"),
@@ -50,6 +51,10 @@ class MessageLookup extends MessageLookupByLibrary {
         "sign_in": MessageLookupByLibrary.simpleMessage("Войти"),
         "successfully_registered": MessageLookupByLibrary.simpleMessage(
             "Пользователь зарегестрирован успешно"),
+        "task": MessageLookupByLibrary.simpleMessage("Task"),
+        "task_all_day": MessageLookupByLibrary.simpleMessage("Весь день"),
+        "task_input_title":
+            MessageLookupByLibrary.simpleMessage("Введите название заметки"),
         "title": MessageLookupByLibrary.simpleMessage("Заголовок")
       };
 }

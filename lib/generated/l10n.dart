@@ -269,6 +269,46 @@ class S {
       args: [],
     );
   }
+
+  /// `Event`
+  String get event {
+    return Intl.message(
+      'Event',
+      name: 'event',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Task`
+  String get task {
+    return Intl.message(
+      'Task',
+      name: 'task',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Весь день`
+  String get task_all_day {
+    return Intl.message(
+      'Весь день',
+      name: 'task_all_day',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Введите название заметки`
+  String get task_input_title {
+    return Intl.message(
+      'Введите название заметки',
+      name: 'task_input_title',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

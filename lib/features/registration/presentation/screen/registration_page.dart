@@ -21,7 +21,6 @@ class RegistrationPage extends StatelessWidget {
       }
       context.pop();
       currentRoute = router.routerDelegate.currentConfiguration.fullPath;
-      print('CURRENT ROUTE ==>> $currentRoute');
     }
   }
 

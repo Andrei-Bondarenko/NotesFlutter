@@ -5,7 +5,7 @@ import 'package:go_router/go_router.dart';
 import 'package:notes/features/home/presentation/bloc/home_cubit.dart';
 import 'package:notes/features/home/presentation/bloc/home_state.dart';
 
-import '../../../generated/l10n.dart';
+import '../../../../generated/l10n.dart';
 
 class NotesBottomNavigationBar extends StatelessWidget {
   const NotesBottomNavigationBar({super.key, required this.navigationShell});
@@ -16,6 +16,7 @@ class NotesBottomNavigationBar extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(builder: (context, state) {
       return BottomNavigationBar(
+        backgroundColor: Colors.white,
         currentIndex: state.index,
         type: BottomNavigationBarType.fixed,
         fixedColor: Colors.orangeAccent ,

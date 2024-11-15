@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../../../../core/di/dependency_injection.dart';
-import '../../../../core/ui/widgets/notes_bottom_nav_bar.dart';
+import '../../../../core/ui/widgets/bottom_nav_bar/notes_bottom_nav_bar.dart';
 import '../../../auth/presentation/bloc/auth_bloc.dart';
 import '../bloc/home_cubit.dart';
 

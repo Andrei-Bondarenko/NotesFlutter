@@ -31,7 +31,6 @@ class NotesListBloc extends Bloc<NotesListEvent, NotesListState> {
   ) async {
     emit(state.copyWith(isLoading: true));
     final notes = await _noteInteractor.getNotes();
-    debugPrint('Bloc data ==>>> $notes');
     emit(state.copyWith(notes: notes, isLoading: false));
   }
 

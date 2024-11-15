@@ -5,12 +5,14 @@ import 'package:notes/core/navigation/routes/note_route.dart';
 import 'package:notes/core/navigation/routes/notes_list_route.dart';
 import 'package:notes/core/navigation/routes/profile_route.dart';
 import 'package:notes/core/navigation/routes/registration_route.dart';
+import 'package:notes/core/navigation/routes/reminder_details_route.dart';
 import 'package:notes/core/navigation/routes/reminders_route.dart';
 import 'package:notes/features/login/presentation/screen/login_page.dart';
 import 'package:notes/features/note/presentation/screen/note_page.dart';
 import 'package:notes/features/notes_list/presentation/screen/notes_list_page.dart';
 import 'package:notes/features/profile/presentation/screen/profile_page.dart';
 import 'package:notes/features/registration/presentation/screen/registration_page.dart';
+import 'package:notes/features/reminder_details/presentation/screen/reminder_details_page.dart';
 import 'package:notes/features/reminders/presentation/screen/reminders_page.dart';
 import 'package:path/path.dart';
 
@@ -34,46 +36,53 @@ class NotesRouter {
                         pageBuilder: (context, state) {
                           final id = state.uri.queryParameters[NoteRoute.idKeyArg];
                           return MaterialPage(child: NotePage(id: id));
-                        }
-                    ),
-                  ]
-              ),
+                        }),
+                  ]),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
                 path: ProfileRoute.name,
-                pageBuilder: (context, state) =>
-                const MaterialPage(
+                pageBuilder: (context, state) => const MaterialPage(
                   child: ProfilePage(),
                 ),
                 routes: [
                   GoRoute(
                     path: LoginRoute.name,
-                    pageBuilder: (context, state) =>
-                    const MaterialPage(
+                    pageBuilder: (context, state) => const MaterialPage(
                       child: LoginPage(),
                     ),
                     routes: [
                       GoRoute(
                         path: RegistrationRoute.name,
-                        pageBuilder: (context, state) =>
-                        const MaterialPage(
+                        pageBuilder: (context, state) => const MaterialPage(
                           child: RegistrationPage(),
                         ),
                       ),
                     ],
                   )
-                ],),
+                ],
+              ),
             ],
           ),
           StatefulShellBranch(
             routes: [
               GoRoute(
-                path: RemindersRoute.name,
-                pageBuilder: (context, state) => const MaterialPage(child: RemindersPage()),
-              ),
+                  path: RemindersRoute.name,
+                  pageBuilder: (context, state) => const MaterialPage(child: RemindersPage()),
+                  routes: [
+                    GoRoute(
+                        name: ReminderDetailsRoute.name,
+                        path: ReminderDetailsRoute.name,
+                        pageBuilder: (context, state) {
+                          final queryParams = state.uri.queryParameters;
+                          final stringDate = queryParams[ReminderDetailsRoute.dateKeyArg];
+                          final date = DateTime.tryParse(stringDate ?? '');
+                          final id = queryParams[ReminderDetailsRoute.idKeyArg];
+                          return MaterialPage(child: ReminderDetailsPage(date: date, id: id));
+                        }),
+                  ]),
             ],
           ),
         ],
